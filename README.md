@@ -32,5 +32,5 @@ npm install
 npm run dev
 Then open http://localhost:5173 in your browser.
 
-About
+# About
 This project demonstrates building a puzzle game using React and Vite. It’s a great showcase of frontend development skills, including state management, UI design, and problem-solving logic.
