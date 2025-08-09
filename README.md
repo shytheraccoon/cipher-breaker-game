@@ -1,4 +1,4 @@
-#Cipher Breaker Game
+# Cipher Breaker Game
 Cipher Breaker is a React + Vite web app game where players decode encrypted messages using logic and pattern recognition. It’s a fun and challenging brain teaser that tests your cipher-solving skills.
 
 Features
