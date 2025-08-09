@@ -1,24 +1,20 @@
 # Cipher Breaker Game
+
 Cipher Breaker is a React + Vite web app game where players decode encrypted messages using logic and pattern recognition. It’s a fun and challenging brain teaser that tests your cipher-solving skills.
 
-Features
-Interactive letter substitution cipher puzzle
+## Features
+- Interactive letter substitution cipher puzzle  
+- Responsive and clean UI built with React  
+- Random puzzles generated on each play  
+- Easy to use and accessible gameplay  
+- Built with modern tools: React + Vite  
 
-Responsive and clean UI built with React
+## Demo
+[Live Demo](https://cipher-breaker-game.netlify.app/)
 
-Random puzzles generated on each play
+## Installation & Usage
 
-Easy to use and accessible gameplay
-
-Built with modern tools: React + Vite
-
-Demo
-[Live Demo Link Here] ← We’ll add this after deployment
-
-Installation & Usage
-bash
-Copy
-Edit
+```bash
 # Clone the repo
 git clone https://github.com/shytheraccoon/cipher-breaker-game.git
 
@@ -30,6 +26,7 @@ npm install
 
 # Run the app locally
 npm run dev
+```
 Then open http://localhost:5173 in your browser.
 
 # About
