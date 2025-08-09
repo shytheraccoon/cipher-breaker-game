@@ -1,0 +1,230 @@
+.cipher-tools {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Morse Code Tool */
+.morse-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.morse-display {
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.morse-letter {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #646cff;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.morse-sequence {
+  font-family: monospace;
+  color: #aaa;
+  min-height: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.morse-button {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  background: #2a2a2a;
+  border: 2px solid #3a3a3a;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.morse-button:active {
+  background: #646cff;
+  transform: scale(0.95);
+}
+
+.morse-instructions {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.morse-instructions p {
+  margin: 0.25rem 0;
+}
+
+
+
+/* Vigenere Tool */
+.vigenere-tool {
+  padding: 1rem;
+}
+
+.vigenere-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: monospace;
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.vigenere-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vigenere-char {
+  color: #646cff;
+  margin: 0 2px;
+}
+
+.vigenere-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.vigenere-controls button {
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  color: white;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.vigenere-controls button:hover {
+  background: #2a2a2a;
+}
+
+.vigenere-row .vigenere-char.shifted {
+  color: #aaa;
+}
+.vigenere-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cipher-wheel {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transition: transform 0.3s ease;
+}
+
+.wheel-inner, .wheel-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel-char {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  font-family: monospace;
+}
+
+.wheel-control {
+  width: 100%;
+}
+
+/* Atbash Tool */
+.atbash-tool {
+  padding: 1rem;
+}
+
+.atbash-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: monospace;
+  background: #2a2a2a;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.atbash-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.atbash-char {
+  color: #646cff;
+}
+
+.atbash-row.reverse .atbash-char {
+  color: #aaa;
+}
+
+/* ROT13 Tool */
+.rot13-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.caesar-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rot13-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rot13-number {
+  font-size: 2rem;
+  color: #646cff;
+  font-weight: bold;
+}
+
+/* Math Hint Styles */
+.math-hint {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #2a2a2a;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.math-hint .equation {
+  font-size: 1.5rem;
+  font-family: monospace;
+  color: #646cff;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
