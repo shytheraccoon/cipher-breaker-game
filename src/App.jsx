@@ -58,14 +58,13 @@ function App() {
   }
 
   const handleNextPuzzle = () => {
-    // Increase difficulty based on streak
-    const difficulty = streak >= 3 ? DIFFICULTY.HARD : 
-                      streak >= 1 ? DIFFICULTY.MEDIUM : 
-                      DIFFICULTY.EASY
-
-    setCurrentPuzzle(generatePuzzle(difficulty))
-    setShowModal(false)
-    setRemainingTime(120)
+    // Generate new puzzle with random cipher
+    const newPuzzle = generatePuzzle();
+    console.log('New puzzle cipher:', newPuzzle.cipher.name);
+    
+    setCurrentPuzzle(newPuzzle);
+    setShowModal(false);
+    setRemainingTime(120);
   }
 
   if (!currentPuzzle) return <div>Loading...</div>

@@ -34,10 +34,10 @@ const GameDisplay = ({
         <h2>Decrypt this {hints.name}:</h2>
         <div className="message">{encryptedMessage}</div>
         
-        {currentCipher.name === 'vigenere' && hints.getShiftHint && (
+        {currentCipher.name === 'vigenere' && currentCipher.shiftHint && (
           <div className="math-hint">
             <p>Solve this equation to find the shift amount:</p>
-            <div className="equation">{hints.getShiftHint().equation}</div>
+            <div className="equation">{currentCipher.shiftHint.equation}</div>
           </div>
         )}
         

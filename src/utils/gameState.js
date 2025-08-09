@@ -1,5 +1,6 @@
 import { atbashCipher, rot13Cipher, vigenereCipher, 
   morseCipher, DIFFICULTY } from './ciphers';
+import { generateEquation } from './mathHints';
 
 // Pool of words and phrases for the game
 const WORD_POOL = [
@@ -27,44 +28,79 @@ const POINTS = {
 // Get a random item from an array
 const getRandomItem = (array) => array[Math.floor(Math.random() * array.length)];
 
-// Generate a random cipher based on difficulty
-export const generateCipher = (minDifficulty = DIFFICULTY.EASY) => {
-  console.log('Generating cipher with difficulty:', minDifficulty);
-  
-  // Force equal distribution of ciphers
+// Generate a random cipher with equal probability
+export const generateCipher = () => {
+  // All available ciphers with equal chance of selection
   const allCiphers = [
-    atbashCipher,
-    rot13Cipher,
-    vigenereCipher,
-    morseCipher
+    atbashCipher,    // EASY difficulty - base score 100
+    rot13Cipher,     // MEDIUM difficulty - base score 200
+    vigenereCipher,  // HARD difficulty - base score 300
+    morseCipher      // HARD difficulty - base score 300
   ];
 
-  // Simply pick a random cipher from all available ones
+  // Pick a random cipher
   const selectedCipher = getRandomItem(allCiphers);
-  console.log('Selected cipher:', selectedCipher.name);
+  
+  // Log selection
+  console.log('Selected cipher:', selectedCipher.name, 'with difficulty:', selectedCipher.difficulty);
 
   return selectedCipher;
 };
 
 // Generate a new puzzle
 export const generatePuzzle = (minDifficulty = DIFFICULTY.EASY) => {
+  console.log('Generating puzzle with minimum difficulty:', minDifficulty);
+  
   const phrase = getRandomItem(WORD_POOL);
   const cipher = generateCipher(minDifficulty);
   
   let key = null;
-  if (cipher.name === 'vigenere') {
-    // Generate a random 3-letter key for Vigenère cipher
-    const vigenereKeys = ['KEY', 'BOX', 'CAT', 'DOG', 'FOX', 'HAT', 'MAP', 'PEN', 'SUN', 'ZIP'];
-    key = getRandomItem(vigenereKeys);
-    console.log('Using Vigenère cipher with key:', key);
-  }
+  let shiftHint = null;
+  let encryptedPhrase = '';
+  
+  try {
+    if (cipher.name === 'vigenere') {
+      // Generate a random 3-letter key for Vigenère cipher
+      const vigenereKeys = ['KEY', 'BOX', 'CAT', 'DOG', 'FOX', 'HAT', 'MAP', 'PEN', 'SUN', 'ZIP'];
+      key = getRandomItem(vigenereKeys);
+      console.log('Using Vigenère key:', key);
+      
+      // Generate the shift hint equation once and store it
+      const shift = key.charAt(0).charCodeAt(0) - 65; // Use first letter's shift
+      shiftHint = {
+        type: 'math',
+        equation: generateEquation(shift),
+        answer: shift
+      };
+      encryptedPhrase = cipher.encrypt(phrase, key);
+    } else {
+      encryptedPhrase = cipher.encrypt(phrase);
+    }
 
-  return {
-    originalPhrase: phrase,
-    encryptedPhrase: cipher.encrypt(phrase, key),
-    cipher,
-    key,
-    startTime: Date.now()
+    console.log('Created puzzle:', {
+      cipher: cipher.name,
+      original: phrase,
+      encrypted: encryptedPhrase,
+      key: key
+    });
+
+    return {
+      originalPhrase: phrase,
+      encryptedPhrase,
+      shiftHint,
+      cipher,
+      key,
+      startTime: Date.now()
+    };
+  } catch (error) {
+    console.error('Error generating puzzle:', error);
+    // Fallback to atbash if there's an error
+    return {
+      originalPhrase: phrase,
+      encryptedPhrase: atbashCipher.encrypt(phrase),
+      cipher: atbashCipher,
+      startTime: Date.now()
+    };
   };
 };
 

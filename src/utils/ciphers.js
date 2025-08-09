@@ -29,14 +29,7 @@ export const CIPHER_HINTS = {
       'Like multiple Caesar ciphers with different shifts',
       'The shift changes for each letter based on a keyword',
       'Try to guess the length of the keyword by looking for repeated patterns'
-    ],
-    getShiftHint: () => {
-      return {
-        type: 'math',
-        equation: generateEquation(vigenereCipher.currentShift),
-        answer: vigenereCipher.currentShift
-      };
-    }
+    ]
   },
   morse: {
     name: 'Morse Code',
@@ -90,8 +83,6 @@ export const rot13Cipher = {
   decrypt: (text) => shiftText(text, 13), // ROT13 is its own inverse
   difficulty: DIFFICULTY.MEDIUM
 };
-
-import { generateEquation } from './mathHints';
 
 // Vigenère Cipher
 export const vigenereCipher = {
